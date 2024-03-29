@@ -32,7 +32,7 @@ void	Fixed::setRawBits(int const raw) {
 
 // _rawbits >> _dec_point "rounds" down, i.e floors.
 // By adding half of a unit we can round up and still be relatively fast
-int		Fixed::toInt(void) const{
+int		Fixed::toInt(void) const {
 	return (_rawbits + (1 << (_dec_point - 1))) >> _dec_point;
 }
 
@@ -42,7 +42,8 @@ float	Fixed::toFloat(void) const{
 
 Fixed&	Fixed::operator=(Fixed const& ref) {
 	//std::cout << "Copy assignment operator called" << std::endl;
-	_rawbits = ref._rawbits;
+	if (this != &ref)
+		_rawbits = ref._rawbits;
 	return *this;
 }
 
