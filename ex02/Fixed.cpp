@@ -26,7 +26,7 @@ int	Fixed::getRawBits(void) {
 	return _rawbits;
 }
 
-void	Fixed::setRawBits(int const raw) {
+void	Fixed::setRawBits(const int raw) {
 	_rawbits = raw;
 }
 
@@ -65,7 +65,7 @@ bool	Fixed::operator>=(const Fixed& ref) const{
 }
 
 bool	Fixed::operator<=(const Fixed& ref) const{
-	return _rawbits >= ref._rawbits;
+	return _rawbits <= ref._rawbits;
 }
 
 bool	Fixed::operator==(const Fixed& ref) const{
@@ -73,23 +73,29 @@ bool	Fixed::operator==(const Fixed& ref) const{
 }
 
 bool	Fixed::operator!=(const Fixed& ref) const{
-	return _rawbits == ref._rawbits;
+	return _rawbits != ref._rawbits;
 }
 
 Fixed	Fixed::operator+(const Fixed& ref) const{
-	return Fixed(_rawbits + ref._rawbits);
+	Fixed	res;
+
+	res.setRawBits(_rawbits + ref._rawbits);
+	return (res);
 }
 
 Fixed	Fixed::operator-(const Fixed& ref) const{
-	return Fixed(_rawbits - ref._rawbits);
+	Fixed	res;
+
+	res.setRawBits(_rawbits - ref._rawbits);
+	return (res);
 }
 
 Fixed	Fixed::operator*(const Fixed &ref) const{
-	Fixed	fprod;
+	Fixed	res;
 	int64_t prod = (int64_t)_rawbits * (int64_t)ref._rawbits;
 
-	fprod._rawbits = (int32_t)((prod >> _dec_point) + ((prod >> (_dec_point - 1)) & 1));
-	return fprod;
+	res._rawbits = (int32_t)((prod >> _dec_point) + ((prod >> (_dec_point - 1)) & 1));
+	return res;
 }
 
 Fixed	Fixed::operator/(const Fixed &ref) const{
@@ -107,6 +113,7 @@ Fixed&	Fixed::operator++(void) {
 
 Fixed	Fixed::operator++(int) {
 	Fixed tmp = *this;
+
 	++(*this);
 	return tmp;
 }
@@ -118,6 +125,7 @@ Fixed&	Fixed::operator--(void) {
 
 Fixed	Fixed::operator--(int) {
 	Fixed tmp = *this;
+
 	--(*this);
 	return tmp;
 }
