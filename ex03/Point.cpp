@@ -23,6 +23,7 @@ Point::Point(const Fixed a, const Fixed b): _x(a), _y(b) {
 
 Point&	Point::operator=(const Point &src) {
 	std::cout << "Point assignment operator called" << std::endl;
+	*this = src;
 	return *this;
 }
 
