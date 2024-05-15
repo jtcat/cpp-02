@@ -1,5 +1,5 @@
-#ifndef FIXED_H
-# define FIXED_H
+#ifndef FIXED_HH
+# define FIXED_HH
 
 #include <iostream>
 #include <cmath>
