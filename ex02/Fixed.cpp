@@ -48,16 +48,7 @@ Fixed&	Fixed::operator=(Fixed const& ref) {
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& num) {
-	out << num.toInt();
-	uint	decimal = (num._rawbits & ((1 << num._dec_point) - 1));
-	if (decimal > 0) {
-		out << '.';
-		while (decimal > 0) {
-			decimal *= 10;
-			out << (char)('0' + (decimal >> num._dec_point));
-			decimal &= ((1 << num._dec_point) - 1);
-		}
-	}
+	out << num.toFloat();
 	return out;
 }
 
@@ -96,12 +87,17 @@ Fixed	Fixed::operator-(const Fixed& ref) const{
 Fixed	Fixed::operator*(const Fixed &ref) const{
 	Fixed	fprod;
 	int64_t prod = (int64_t)_rawbits * (int64_t)ref._rawbits;
+
 	fprod._rawbits = (int32_t)((prod >> _dec_point) + ((prod >> (_dec_point - 1)) & 1));
 	return fprod;
 }
 
 Fixed	Fixed::operator/(const Fixed &ref) const{
-	return Fixed((int32_t)(((int64_t)_rawbits << _dec_point) / (int64_t)ref._rawbits >> _dec_point));
+	Fixed	fdiv;
+	int64_t	div = (static_cast<int64_t>(_rawbits) << 32) / static_cast<int64_t>(ref._rawbits);
+
+	fdiv.setRawBits(static_cast<int32_t>(div >> (32 - _dec_point)));
+	return fdiv;
 }
 
 Fixed&	Fixed::operator++(void) {
