@@ -21,7 +21,8 @@ Fixed::Fixed(Fixed const &ref) {
 
 Fixed&	Fixed::operator=(Fixed const&ref) {
 	std::cout << "Copy assignment operator called" << std::endl;
-	_rawbits = ref._rawbits;
+	if (&ref != this)
+		_rawbits = ref._rawbits;
 	return *this;
 }
 
