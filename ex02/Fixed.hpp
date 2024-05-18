@@ -18,6 +18,7 @@ class Fixed {
 
 		Fixed&	operator=(Fixed const &ref);
 
+		// Comparision operators
 		bool	operator>(Fixed const &ref) const;
 		bool	operator<(Fixed const &ref) const;
 		bool	operator>=(Fixed const &ref) const;
@@ -25,6 +26,9 @@ class Fixed {
 		bool	operator==(Fixed const &ref) const;
 		bool	operator!=(Fixed const &ref) const;
 
+		// Arithmetic operators
+		Fixed	operator-(void) const;
+		Fixed	operator+(void) const;
 		Fixed	operator+(Fixed const &ref) const;
 		Fixed	operator-(Fixed const &ref) const;
 		Fixed	operator*(Fixed const &ref) const;

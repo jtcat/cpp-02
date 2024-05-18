@@ -13,7 +13,7 @@ Fixed::Fixed(const float val) {
 }
 
 Fixed::Fixed(Fixed const &ref) {
-	_rawbits = ref._rawbits;
+	*this = ref;
 	//std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -43,7 +43,7 @@ float	Fixed::toFloat(void) const{
 Fixed&	Fixed::operator=(Fixed const& ref) {
 	//std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &ref)
-		_rawbits = ref._rawbits;
+		_rawbits = ref.getRawBits();
 	return *this;
 }
 
@@ -104,6 +104,19 @@ Fixed	Fixed::operator/(const Fixed &ref) const{
 
 	fdiv.setRawBits(static_cast<int32_t>(div >> (32 - _dec_point)));
 	return fdiv;
+}
+
+Fixed	Fixed::operator-(void) const{
+	Fixed	res;
+
+	res.setRawBits(-_rawbits);
+	return res;
+}
+
+Fixed	Fixed::operator+(void) const{
+	Fixed	res(*this);
+
+	return res;
 }
 
 Fixed&	Fixed::operator++(void) {
