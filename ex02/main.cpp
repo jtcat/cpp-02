@@ -1,4 +1,4 @@
-#include "Fixed.h"
+#include "Fixed.hpp"
 #include <iostream>
 
 int main( void ) {
@@ -14,6 +14,12 @@ int main( void ) {
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
 	std::cout << Fixed::min( a, b ) << std::endl;
+
+	std::cout << "-(-1000) - 4: " << -Fixed(-1000) - Fixed(4) << std::endl;
+
+	std::cout << "2.012 + +(-4.1): " << Fixed(2.012f) + +Fixed(-4) << std::endl;
+
+	std::cout << "-10.2 * 2: " << Fixed(-10.2f) * Fixed(2) << std::endl;
 	std::cout << "4 / 2: " << Fixed(4) / Fixed(2) << std::endl;
 	std::cout << "5 / 2: " << Fixed(5) / Fixed(2) << std::endl;
 	std::cout << "-5 / 2: " << Fixed(-5) / Fixed(2) << std::endl;
