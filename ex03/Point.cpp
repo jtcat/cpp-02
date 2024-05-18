@@ -23,7 +23,7 @@ Point::Point(const Fixed a, const Fixed b): _x(a), _y(b) {
 
 Point&	Point::operator=(const Point &src) {
 	std::cout << "Point assignment operator called" << std::endl;
-	*this = src;
+	(void)src;
 	return *this;
 }
 
@@ -35,4 +35,22 @@ Point	Point::operator+(const Point& other) const {
 Point	Point::operator-(const Point& other) const {
 	std::cout << "Point difference operator called" << std::endl;
 	return (Point(_x + other._x, _y + other._y));
+}
+
+Point	Point::operator*(const float factor) const {
+	std::cout << "Point difference operator called" << std::endl;
+	return (Point(_x * factor, _y * factor));
+}
+
+Point	Point::operator/(const float factor) const {
+	std::cout << "Point difference operator called" << std::endl;
+	return (Point(_x / factor, _y / factor));
+}
+
+const Fixed&	Point::x(void) const {
+	return _x;
+}
+
+const Fixed&	Point::y(void) const {
+	return _y;
 }

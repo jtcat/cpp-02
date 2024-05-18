@@ -19,9 +19,16 @@ class	Point {
 
 		Point	operator+(const Point& other) const;
 		Point	operator-(const Point& other) const;
+		Point	operator*(const float factor) const;
+		Point	operator/(const float factor) const;
 
 		float	dot(const Point& other) const;
 		static float	dot(const Point& a, const Point& b);
+
+		const Fixed&	x(void) const;
+		const Fixed&	y(void) const;
 };
+
+bool	bsp(const Point a, const Point b, const Point c, const Point point);
 
 #endif
