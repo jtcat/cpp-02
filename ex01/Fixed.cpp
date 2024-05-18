@@ -16,13 +16,13 @@ Fixed::Fixed(const float val) {
 
 Fixed::Fixed(Fixed const &ref) {
 	std::cout << "Copy constructor called" << std::endl;
-	_rawbits = ref._rawbits;
+	*this = ref;
 }
 
 Fixed&	Fixed::operator=(Fixed const&ref) {
 	std::cout << "Copy assignment operator called" << std::endl;
 	if (&ref != this)
-		_rawbits = ref._rawbits;
+		_rawbits = ref.getRawBits();
 	return *this;
 }
 
@@ -31,7 +31,7 @@ Fixed::~Fixed(void) {
 }
 
 int	Fixed::getRawBits(void) const {
-	std::cout << "getRawBits member function called" << std::endl;
+//	std::cout << "getRawBits member function called" << std::endl;
 	return _rawbits;
 }
 
