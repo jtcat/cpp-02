@@ -30,6 +30,9 @@ class Fixed {
 		Fixed	operator*(Fixed const &ref) const;
 		Fixed	operator/(Fixed const &ref) const;
 
+		Fixed	operator-(void) const;
+		Fixed	operator+(void) const;
+
 		// Pre-increment
 		Fixed&	operator++();
 		// Post-increment

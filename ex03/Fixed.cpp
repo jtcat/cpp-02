@@ -106,6 +106,19 @@ Fixed	Fixed::operator/(const Fixed &ref) const{
 	return fdiv;
 }
 
+Fixed	Fixed::operator-(void) const {
+	Fixed	res;
+
+	res.setRawBits(-_rawbits);
+	return (res);
+}
+
+Fixed	Fixed::operator+(void) const {
+	Fixed	res(*this);
+
+	return (res);
+}
+
 Fixed&	Fixed::operator++(void) {
 	++_rawbits;
 	return *this;
