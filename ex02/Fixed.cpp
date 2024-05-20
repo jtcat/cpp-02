@@ -92,9 +92,9 @@ Fixed	Fixed::operator-(const Fixed& ref) const{
 
 Fixed	Fixed::operator*(const Fixed &ref) const{
 	Fixed	res;
-	int64_t prod = (int64_t)_rawbits * (int64_t)ref._rawbits;
+	int64_t prod = static_cast<int64_t>(_rawbits) * static_cast<int64_t>(ref._rawbits);
 
-	res._rawbits = (int32_t)((prod >> _dec_point) + ((prod >> (_dec_point - 1)) & 1));
+	res._rawbits = static_cast<int32_t>((prod + (1 << (_dec_point - 1))) >> _dec_point);
 	return res;
 }
 
